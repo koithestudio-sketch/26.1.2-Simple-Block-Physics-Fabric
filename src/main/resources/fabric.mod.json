@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "simple_block_physics",
+  "version": "${version}",
+
+  "name": "Simple Block Physics",
+  "description": "A Fabric port of Simple Block Physics mod for newer versions of the game.",
+  "authors": [],
+  "contact": {},
+
+  "license": "MIT",
+  "icon": "assets/simple_block_physics/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": ["io.github.jake404notfound.simple_block_physics.client.Simple_block_physicsDataGenerator"],
+    "client": ["io.github.jake404notfound.simple_block_physics.client.Simple_block_physicsClient"],
+    "main": ["io.github.jake404notfound.simple_block_physics.Simple_block_physics"]
+  },
+
+  "mixins": [
+    "simple_block_physics.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

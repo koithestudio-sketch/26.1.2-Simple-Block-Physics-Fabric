@@ -1,0 +1,15 @@
+.gradle
+build/
+bin/
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+run/
+out/
+*.log
+
+# Fabric Loom
+.gradle/loom-cache
+.gradle/loom-mappings
