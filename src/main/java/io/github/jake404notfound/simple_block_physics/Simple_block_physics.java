@@ -14,8 +14,6 @@ public class Simple_block_physics implements ModInitializer {
             TickHandler.onServerTick();
         });
 
-        ServerTickEvents.START_WORLD_TICK.register(world -> {
-            TickHandler.onLevelTick(world);
-        });
+        ServerTickEvents.START_LEVEL_TICK.register(TickHandler::onLevelTick);
     }
 }

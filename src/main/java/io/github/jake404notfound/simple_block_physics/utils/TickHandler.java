@@ -5,6 +5,8 @@ import io.github.jake404notfound.simple_block_physics.Config;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+
 import java.util.concurrent.atomic.AtomicInteger;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,6 +22,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.Shapes;
+
+
+
 
 @SuppressWarnings("resource")
 public class TickHandler {
@@ -84,7 +89,7 @@ public class TickHandler {
     }
 
     public static void onLevelTick(Level level) {
-        if (!level.isClientSide() && level.getServer() != null && level.getDayTime() % 20L == 1L) {
+        if (!level.isClientSide() && level.getServer() != null && level.getGameTime() % 20L == 1L) {
             for (ServerPlayer player : level.getServer().getPlayerList().getPlayers()) {
                 BlockPos blockPos = player.blockPosition();
                 boolean indusBlock = Config.indestructibleBlocks.contains(level.getBlockState(blockPos).getBlock());
@@ -246,9 +251,9 @@ public class TickHandler {
         if (!blockState.getShape(level, blockPos).equals(Shapes.block())) {
             strength.set(3);
         }
-        blockState.getTags().forEach(blockTagKey -> {
-            if (Config.overwrittenTagMap.containsKey(blockTagKey)) {
-                strength.set(Config.overwrittenTagMap.get(blockTagKey));
+        blockState.tags().forEach(tagKey -> {
+            if (Config.overwrittenTagMap.containsKey(tagKey)) {
+                strength.set(Config.overwrittenTagMap.get(tagKey));
             }
         });
         if (Config.overwrittenBlockMap.containsKey(blockState.getBlock())) {
